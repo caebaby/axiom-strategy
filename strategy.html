@@ -62,24 +62,32 @@
   ol.steps li:last-child{padding-bottom:0}
   .steps-foot{margin-top:16px;padding-left:46px;font-size:14px;color:var(--ink-soft);font-style:italic}
 
-  figure.flow{margin:24px 0 6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(22px,4vw,34px)}
-  figure.flow figcaption{text-align:center;font-family:var(--body);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--grn-mid);font-weight:600;margin-bottom:22px}
-  .vflow{max-width:430px;margin:0 auto}
-  .vnode{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px}
-  .vnode .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
-  .vnode h4{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);letter-spacing:.01em;margin:5px 0 4px}
-  .vnode p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.45}
-  .vnode.hub{background:var(--grn);border-color:var(--grn)}
-  .vnode.hub .k{color:#8fc9aa}.vnode.hub h4{color:#fff}.vnode.hub p{color:#c3dccd}
-  .vnode.end{background:var(--grn-mid);border-color:var(--grn-mid)}
-  .vnode.end .k{color:#d0e8da}.vnode.end h4{color:#fff}.vnode.end p{color:#e2efe8}
-  .fed{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
-  .fed span{font-size:11px;font-weight:600;color:#d3e6da;background:rgba(255,255,255,.1);border:1px solid rgba(143,196,166,.42);border-radius:6px;padding:5px 9px}
-  .pill{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:5px 10px;border-radius:999px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;background:#e9f2ec;color:var(--grn-mid);border:1px solid #cbe1d3}
-  .pill b{background:var(--grn-bright);color:#fff;border-radius:4px;padding:1px 5px;font-size:9.5px}
-  .conn{display:flex;justify-content:center;padding:7px 0;color:#b6c6bc}
-  .conn.g{color:var(--grn-bright)}
-  .conn svg{width:14px;height:10px}
+  figure.flow{margin:26px 0 6px;background:linear-gradient(180deg,#f6faf8,var(--panel));border:1px solid var(--line);border-radius:14px;padding:clamp(26px,4vw,40px) clamp(18px,3vw,30px)}
+  figure.flow figcaption{text-align:center;font-family:var(--body);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--grn-mid);font-weight:600;margin-bottom:28px}
+  .rail{list-style:none;padding:0;margin:0 auto;max-width:468px;position:relative}
+  .rail::before{content:"";position:absolute;left:16px;top:20px;bottom:20px;width:2px;border-radius:2px;
+    background:linear-gradient(180deg,#cbe0d4 0%,#5d9b78 42%,var(--grn-mid) 72%,var(--grn) 100%)}
+  .stage{display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start;padding-bottom:13px}
+  .stage:last-child{padding-bottom:0}
+  .mark{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1;
+    font-family:var(--disp);font-weight:700;font-size:12.5px;background:#fff;border:2px solid #cbe0d4;color:var(--grn-mid);
+    box-shadow:0 0 0 5px #f6faf8}
+  .stage.on .mark{background:var(--grn-mid);border-color:var(--grn-mid);color:#fff}
+  .stage.hub .mark,.stage.end .mark{background:var(--grn);border-color:var(--grn);color:#fff}
+  .stage.end .mark{background:var(--grn-mid);border-color:var(--grn-mid)}
+  .scard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 17px;box-shadow:0 1px 2px rgba(20,40,30,.04)}
+  .scard .k{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .scard h4{font-family:var(--disp);font-weight:700;font-size:15.5px;color:var(--ink);margin:5px 0 3px;letter-spacing:.01em}
+  .scard p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.45}
+  .stage.hub .scard{background:var(--grn);border-color:var(--grn);box-shadow:0 10px 26px rgba(24,56,41,.24)}
+  .stage.hub .k{color:#8fc9aa}.stage.hub h4{color:#fff}.stage.hub p{color:#c3dccd}
+  .stage.end .scard{background:var(--grn-mid);border-color:var(--grn-mid);box-shadow:0 10px 26px rgba(52,117,84,.24)}
+  .stage.end .k{color:#d6ece0}.stage.end h4{color:#fff}.stage.end p{color:#e6f2ec}
+  .fed{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:11px}
+  .fed .lbl{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8fc9aa;font-weight:600;margin-right:2px}
+  .fed span:not(.lbl){font-size:10.5px;font-weight:600;color:#e2efe8;background:rgba(255,255,255,.13);border:1px solid rgba(143,196,166,.42);border-radius:6px;padding:4px 9px}
+  .pill{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:4px 10px 4px 4px;border-radius:999px;font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;background:#e9f2ec;color:var(--grn-mid);border:1px solid #cbe1d3}
+  .pill b{background:var(--grn-mid);color:#fff;border-radius:999px;padding:3px 8px;font-size:9.5px;letter-spacing:.06em}
 
   .callout{background:var(--note);border-left:3px solid var(--grn-mid);border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0 0;font-size:14.5px;color:var(--ink-soft)}
 
@@ -132,17 +140,29 @@
 
       <figure class="flow">
         <figcaption>From referral to booked call</figcaption>
-        <div class="vflow">
-          <div class="vnode"><div class="k">01 · Sources</div><h4>Referrals &amp; contacts</h4><p>Your network, and the people you're introduced to.</p></div>
-          <div class="conn"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
-          <div class="vnode hub"><div class="k">02 · The hub — your website</div><h4>Where they get convinced</h4><p>Your story, your authority, problem → solution.</p><div class="fed"><span>Powered by · Story video</span><span>Podcast</span></div></div>
-          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
-          <div class="vnode"><div class="k">03 · Fit assessment</div><h4>They raise their hand</h4><p>A low-friction step that turns a visitor into a known lead.</p><div class="pill"><b>MQL</b> marketing-qualified</div></div>
-          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
-          <div class="vnode"><div class="k">04 · Book a call</div><h4>Onto your calendar</h4><p>Booking built into the site — no waiting.</p><div class="pill"><b>SQL</b> sales-qualified</div></div>
-          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
-          <div class="vnode end"><div class="k">05 · Conversation</div><h4>Already sold</h4><p>You spend your time with people who show up ready.</p></div>
-        </div>
+        <ol class="rail">
+          <li class="stage">
+            <span class="mark">1</span>
+            <div class="scard"><div class="k">Sources</div><h4>Referrals &amp; contacts</h4><p>Your network, and the people you're introduced to.</p></div>
+          </li>
+          <li class="stage hub">
+            <span class="mark">2</span>
+            <div class="scard"><div class="k">The hub — your website</div><h4>Where they get convinced</h4><p>Your story, your authority, problem → solution.</p>
+              <div class="fed"><span class="lbl">Powered by</span><span>Story video</span><span>Podcast</span></div></div>
+          </li>
+          <li class="stage on">
+            <span class="mark">3</span>
+            <div class="scard"><div class="k">Fit assessment</div><h4>They raise their hand</h4><p>A low-friction step that turns a visitor into a known lead.</p><div class="pill"><b>MQL</b> marketing-qualified</div></div>
+          </li>
+          <li class="stage on">
+            <span class="mark">4</span>
+            <div class="scard"><div class="k">Book a call</div><h4>Onto your calendar</h4><p>Booking built into the site — no waiting.</p><div class="pill"><b>SQL</b> sales-qualified</div></div>
+          </li>
+          <li class="stage end">
+            <span class="mark">5</span>
+            <div class="scard"><div class="k">Conversation</div><h4>Already sold</h4><p>You spend your time with people who show up ready.</p></div>
+          </li>
+        </ol>
       </figure>
 
       <h2>Phase 1 — the foundation</h2>
