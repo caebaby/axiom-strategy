@@ -15,6 +15,16 @@
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  /* shared tab bar */
+  .axbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:16px;background:#fff;border-bottom:1px solid #dfe3ea;padding:9px clamp(14px,4vw,34px)}
+  .axbar .axbrand img{height:30px;width:auto;display:block}
+  .axtabs{display:flex;gap:2px;flex:1}
+  .axtab{font-size:12.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#5a6675;text-decoration:none;padding:11px 14px;border-bottom:2px solid transparent}
+  .axtab:hover{color:#183829}
+  .axtab.is-on{color:#183829;border-bottom-color:#183829}
+  .axcta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#347554;border-radius:7px;padding:10px 15px;text-decoration:none;white-space:nowrap;transition:background .2s}
+  .axcta:hover{background:#183829}
+  @media(max-width:600px){.axbar{gap:8px;flex-wrap:wrap}.axtab{padding:9px 10px;font-size:11.5px}.axcta{font-size:11px;padding:9px 11px}}
   .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
 
   header.top{margin:8px 0 26px}
@@ -83,6 +93,16 @@
 </style>
 </head>
 <body>
+
+  <div class="axbar">
+    <a class="axbrand" href="strategy.html"><img src="axiom-logo-black.png" alt="Axiom Planning Resources"></a>
+    <nav class="axtabs">
+      <a class="axtab" href="strategy.html">Strategy</a>
+      <a class="axtab is-on" href="wireframe.html">Wireframe</a>
+    </nav>
+    <a class="axcta" href="https://form.typeform.com/to/Jeu1Fuia" target="_blank" rel="noopener">Start the intake →</a>
+  </div>
+
 <div class="wrap">
 
   <header class="top">
