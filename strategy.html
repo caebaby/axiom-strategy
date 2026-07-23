@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing Strategy · Axiom Marketing Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Extended:wght@600;700&family=Saira:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grn:#183829; --grn-mid:#347554; --grn-bright:#3f9268;
+    --ink:#1f2a24; --ink-soft:#4f5a53; --ink-faint:#8a938c;
+    --paper:#ffffff; --panel:#f1f6f3; --note:#eaf3ee; --line:#e1e7e2; --line-soft:#eef2ee;
+    --disp:'Saira Extended',system-ui,sans-serif; --body:'Saira',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{font-family:var(--body);color:var(--ink);background:#ebeeeb;line-height:1.7;-webkit-font-smoothing:antialiased;padding:clamp(18px,4vw,54px) 16px}
+
+  .doc{max-width:768px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 1px 3px rgba(20,40,30,.05),0 24px 60px rgba(20,40,30,.08);overflow:hidden}
+  .pad{padding:clamp(30px,6vw,66px) clamp(24px,6vw,72px)}
+
+  .mast{padding:clamp(26px,5vw,44px) clamp(24px,6vw,72px);border-bottom:2px solid var(--grn);display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .mast img{height:46px;width:auto;display:block}
+  .mast .mtitle{text-align:right}
+  .mast .mtitle .k{font-family:var(--body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--grn-mid);font-weight:600}
+  .mast .mtitle h1{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2.4vw,24px);color:var(--grn);letter-spacing:.01em;margin-top:3px}
+
+  .lede{font-size:clamp(16px,1.7vw,19px);color:var(--ink-soft);line-height:1.65}
+  h2{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2.2vw,23px);color:var(--grn);letter-spacing:.01em;line-height:1.2;
+    margin:clamp(38px,5vw,52px) 0 4px;padding-top:clamp(26px,3vw,34px);border-top:1px solid var(--line-soft)}
+  h2:first-of-type{border-top:0;padding-top:0;margin-top:clamp(28px,4vw,38px)}
+  .sub{color:var(--ink-soft);margin:14px 0 0}
+  p{margin:14px 0}
+  strong{font-weight:600;color:var(--ink)}
+  .after{margin-top:16px;color:var(--ink-soft)}
+  .journey{margin-top:18px;font-family:var(--disp);text-transform:uppercase;font-weight:600;font-size:14px;line-height:1.6;color:var(--ink);letter-spacing:.01em}
+  .journey em{color:var(--grn-mid);font-style:normal}
+
+  .rows{margin:18px 0 0;border-top:1px solid var(--line-soft)}
+  .row{display:grid;grid-template-columns:158px 1fr;gap:8px 22px;padding:15px 0;border-bottom:1px solid var(--line-soft)}
+  .row .t{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink);letter-spacing:.01em;text-transform:uppercase;padding-top:1px}
+  .row .d{color:var(--ink-soft);font-size:15px}
+  @media (max-width:540px){.row{grid-template-columns:1fr;gap:3px}}
+
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:20px 0 0}
+  ol.steps li{counter-increment:s;position:relative;padding:0 0 18px 46px;color:var(--ink-soft);font-size:15px}
+  ol.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:-1px;font-family:var(--disp);font-weight:700;font-size:13px;color:#fff;background:var(--grn);width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+  ol.steps li b{color:var(--ink);font-weight:600}
+  ol.steps li:last-child{padding-bottom:0}
+  .steps-foot{margin-top:16px;padding-left:46px;font-size:14px;color:var(--ink-soft);font-style:italic}
+
+  figure.flow{margin:24px 0 6px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:clamp(22px,4vw,34px)}
+  figure.flow figcaption{text-align:center;font-family:var(--body);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--grn-mid);font-weight:600;margin-bottom:22px}
+  .vflow{max-width:430px;margin:0 auto}
+  .vnode{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+  .vnode .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .vnode h4{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);letter-spacing:.01em;margin:5px 0 4px}
+  .vnode p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.45}
+  .vnode.hub{background:var(--grn);border-color:var(--grn)}
+  .vnode.hub .k{color:#8fc9aa}.vnode.hub h4{color:#fff}.vnode.hub p{color:#c3dccd}
+  .vnode.end{background:var(--grn-mid);border-color:var(--grn-mid)}
+  .vnode.end .k{color:#d0e8da}.vnode.end h4{color:#fff}.vnode.end p{color:#e2efe8}
+  .fed{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .fed span{font-size:11px;font-weight:600;color:#d3e6da;background:rgba(255,255,255,.1);border:1px solid rgba(143,196,166,.42);border-radius:6px;padding:5px 9px}
+  .pill{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:5px 10px;border-radius:999px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;background:#e9f2ec;color:var(--grn-mid);border:1px solid #cbe1d3}
+  .pill b{background:var(--grn-bright);color:#fff;border-radius:4px;padding:1px 5px;font-size:9.5px}
+  .conn{display:flex;justify-content:center;padding:7px 0;color:#b6c6bc}
+  .conn.g{color:var(--grn-bright)}
+  .conn svg{width:14px;height:10px}
+
+  .callout{background:var(--note);border-left:3px solid var(--grn-mid);border-radius:0 8px 8px 0;padding:16px 20px;margin:18px 0 0;font-size:14.5px;color:var(--ink-soft)}
+
+  footer.foot{background:var(--grn);color:#a9c9b7;padding:22px clamp(24px,6vw,72px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  footer.foot img{height:34px;opacity:.92}
+  footer.foot span{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+  <article class="doc">
+
+    <div class="mast">
+      <img src="axiom-logo-black.png" alt="Axiom Planning Resources">
+      <div class="mtitle"><div class="k">Axiom Marketing Services</div><h1>Marketing Strategy</h1></div>
+    </div>
+
+    <div class="pad">
+
+      <p class="lede">We build you a hub — a website, a story video, and a podcast — that tells your story, proves you're the authority in your niche, and is built to turn the referrals and contacts you already have into booked conversations. A foundation that does the convincing before you ever get on the phone.</p>
+
+      <h2>The strategy</h2>
+      <p>Your growth already runs on referrals and relationships. The catch is that all of it rides on you being in the room — and when someone you're referred to looks you up, what they find has to match what they were told. So we build you a hub and point everything at it. The goal of the website:</p>
+      <div class="rows">
+        <div class="row"><div class="t">Tell your story</div><div class="d">Who you are, who you serve, why you.</div></div>
+        <div class="row"><div class="t">Demonstrate authority</div><div class="d">Proof you're the one for this specific client — not a generalist.</div></div>
+        <div class="row"><div class="t">A place to send people</div><div class="d">Every referral, every contact, every "go check them out" lands somewhere that sells for you.</div></div>
+        <div class="row"><div class="t">Generate leads</div><div class="d">A visitor raises their hand (a marketing-qualified lead), then books a call (a sales-qualified lead).</div></div>
+      </div>
+      <p class="after">The website is the center of gravity. The story video and the podcast feed it.</p>
+
+      <h2>How the three pieces do the work</h2>
+      <p>The whole strategy is simple: speak to your prospect's problem and pain, then present your solution — in the format that actually lands. Each asset has a job.</p>
+      <div class="rows">
+        <div class="row"><div class="t">The website</div><div class="d"><strong>The hub.</strong> Names your prospect's problem in their own words, proves your authority, and gives them one clear next step. Everything points here.</div></div>
+        <div class="row"><div class="t">The story video</div><div class="d"><strong>The trust.</strong> People believe a person, not a page. Your story and your face carry a credibility a paragraph never could — a referred prospect shows up already warmer.</div></div>
+        <div class="row"><div class="t">The podcast</div><div class="d"><strong>The authority.</strong> Eight episodes that speak straight to your niche's real problems, pains, and questions, and walk the listener to your solution — on their time, not yours. Recorded once; working for you long after.</div></div>
+      </div>
+      <p class="journey"><em>“I've got a vague problem”</em> → <em>“they understand it”</em> → <em>“they're clearly the one”</em> → <em>“I want to talk.”</em></p>
+
+      <figure class="flow">
+        <figcaption>From referral to booked call</figcaption>
+        <div class="vflow">
+          <div class="vnode"><div class="k">01 · Sources</div><h4>Referrals &amp; contacts</h4><p>Your network, and the people you're introduced to.</p></div>
+          <div class="conn"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
+          <div class="vnode hub"><div class="k">02 · The hub — your website</div><h4>Where they get convinced</h4><p>Your story, your authority, problem → solution.</p><div class="fed"><span>Powered by · Story video</span><span>Podcast</span></div></div>
+          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
+          <div class="vnode"><div class="k">03 · Fit assessment</div><h4>They raise their hand</h4><p>A low-friction step that turns a visitor into a known lead.</p><div class="pill"><b>MQL</b> marketing-qualified</div></div>
+          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
+          <div class="vnode"><div class="k">04 · Book a call</div><h4>Onto your calendar</h4><p>Booking built into the site — no waiting.</p><div class="pill"><b>SQL</b> sales-qualified</div></div>
+          <div class="conn g"><svg viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l6 6 6-6"/></svg></div>
+          <div class="vnode end"><div class="k">05 · Conversation</div><h4>Already sold</h4><p>You spend your time with people who show up ready.</p></div>
+        </div>
+      </figure>
+
+      <h2>Phase 1 — the foundation</h2>
+      <div class="rows">
+        <div class="row"><div class="t">Website — the hub</div><div class="d">Your story, your positioning, and the pieces that turn interest into a conversation: a <strong>fit assessment</strong> that captures a lead, and <strong>call booking</strong> built right in, so a prospect can raise their hand and get on your calendar without waiting.</div></div>
+        <div class="row"><div class="t">Story video</div><div class="d">A firm story, plus a short one for each partner.</div></div>
+        <div class="row"><div class="t">Static podcast</div><div class="d">Eight episodes mapped to your niche, built from the research.</div></div>
+      </div>
+      <p class="after">This is the foundation. It's built to stand on its own — and to have more added once it's proving out.</p>
+
+      <h2>How we work together</h2>
+      <p>We handle the build: strategy, research, copy, design, video, podcast, and hosting. What makes it land is collaboration — this is your practice and your voice, so we lean on you at the right moments:</p>
+      <div class="rows">
+        <div class="row"><div class="t">Timely feedback</div><div class="d">So we keep the project moving.</div></div>
+        <div class="row"><div class="t">Client insight</div><div class="d">Into your clients and prospects — what they actually worry about, and how they talk about it.</div></div>
+        <div class="row"><div class="t">Design input</div><div class="d">On the overall direction.</div></div>
+        <div class="row"><div class="t">A hand on the copy</div><div class="d">Especially the website — you know how to say it to these people better than anyone.</div></div>
+      </div>
+      <div class="callout"><strong>Compliance runs through your team, not us.</strong> Your team runs approvals through your firm — that piece sits with them, and we build every piece to be compliance-ready and easy to submit.</div>
+      <p class="after">We collaborate through the whole process, and you approve at each step. Site live in about 45 days.</p>
+
+      <h2>Beyond Phase One</h2>
+      <p class="sub">Once the foundation is built and proving out, there's room to add more — at your pace, only if it fits.</p>
+      <div class="rows">
+        <div class="row"><div class="t">A webinar</div><div class="d">Puts your authority to work — teaching your prospects and moving them toward a conversation. Persuasion earned through your expertise, not pushed.</div></div>
+        <div class="row"><div class="t">Ongoing content</div><div class="d">Keeping the hub fed and your authority compounding.</div></div>
+        <div class="row"><div class="t">Newsletter</div><div class="d">A regular touch that re-promotes everything you're already creating.</div></div>
+        <div class="row"><div class="t">Nurture</div><div class="d">A light sequence that moves someone from "just found you" to "booked a call."</div></div>
+        <div class="row"><div class="t">Paid ads</div><div class="d">When you want more than referrals can supply.</div></div>
+        <div class="row"><div class="t">Internal marketing</div><div class="d">Turning the relationships you already have into a steady source of referrals — systematizing the thoughtful client touches you're already doing.</div></div>
+      </div>
+      <p class="after">The foundation comes first. The rest is there when you want it.</p>
+
+      <h2>Next steps</h2>
+      <ol class="steps">
+        <li><b>Kickoff &amp; inputs.</b> You send current site access, any brand assets, a few examples of sites you dislike (as useful as ones you like), a few bullets on your ideal client, and the name of your compliance point-person.</li>
+        <li><b>Research.</b> We build the ICP brief — your clients' real problems, pains, and the language they use.</li>
+        <li><b>Pages &amp; wireframe.</b> We determine the pages your site needs and lay out the structure for you to react to.</li>
+        <li><b>Branding.</b> Logo/wordmark, palette, type, the overall look.</li>
+        <li><b>Web page copy.</b> We draft; you shape the voice and confirm the facts.</li>
+        <li><b>Schedule the story video shoot.</b> Lock a date and location.</li>
+      </ol>
+      <p class="steps-foot">From there we build, QA, and launch — site live in about 45 days — with the podcast recorded around the shoot.</p>
+
+    </div>
+
+    <footer class="foot">
+      <img src="axiom-logo-white.png" alt="Axiom Planning Resources">
+      <span>Positioning · Hub · Conversations</span>
+    </footer>
+
+  </article>
+</body>
+</html>

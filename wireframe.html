@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advisor Site Wireframe — Factory Spine</title>
+<style>
+  :root{
+    --ink:#1d2430; --muted:#6b7688; --line:#c4ccd8; --line2:#9aa6b6;
+    --bg:#eef1f5; --paper:#fff; --box:#f4f6f9; --boxline:#cdd5e0;
+    --gold:#347554; --goldbg:#e9f2ec; --goldline:#cbe1d3; --dark:#183829; --green:#183829; --green2:#347554; --greenbg:#e6f0ea; --greenline:#bcd8c9; --note:#5a6alto;
+    --note:#586074; --accentbg:#e6f0ea; --accentline:#bcd8c9;
+    --mono:'SFMono-Regular',ui-monospace,'Cascadia Code','Roboto Mono',Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+
+  header.top{margin:8px 0 26px}
+  header.top .kick{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  header.top h1{font-size:26px;margin:6px 0 4px;font-weight:650}
+  header.top p{margin:0;color:var(--muted);max-width:70ch;font-size:14px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0 8px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px;font-size:12px;color:var(--muted)}
+  .legend b{color:var(--ink)}
+  .swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+
+  /* page canvas = the site */
+  .canvas{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(30,40,60,.06),0 12px 40px rgba(30,40,60,.06)}
+
+  .sec{display:grid;grid-template-columns:1fr 300px;gap:0;border-bottom:1px solid var(--line)}
+  .sec:last-child{border-bottom:0}
+  .body{padding:22px 24px;border-right:1px dashed var(--line2)}
+  .note{padding:20px 20px;background:#fbfcfe;font-size:12.5px;color:var(--note)}
+  .note .job{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .note .cta-tag{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:20px;border:1px solid var(--accentline);background:var(--accentbg);color:#37507e}
+  .note .cta-none{border-color:var(--line);background:#f2f4f7;color:var(--muted)}
+  .note .feel{margin-top:8px;font-style:italic;color:#7a8394}
+
+  .tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .tag .n{background:var(--dark);color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+  .tag.core .n{background:var(--dark)}
+  .tag.std .n{background:#7a8699}
+
+  /* wireframe primitives */
+  .box{background:var(--box);border:1px solid var(--boxline);border-radius:7px}
+  .ph{height:10px;background:#dfe4ec;border-radius:4px;margin:7px 0}
+  .ph.title{height:16px;width:70%;background:#cfd6e1}
+  .ph.h1{height:26px;width:88%;background:#c3ccd9}
+  .ph.sm{height:8px;width:55%}
+  .ph.line{width:100%}
+  .ph.w40{width:40%}.ph.w60{width:60%}.ph.w80{width:80%}.ph.w30{width:30%}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .col{flex:1;min-width:0}
+  .pad{padding:14px}
+  .center{text-align:center}
+  .btn{display:inline-block;font-family:var(--mono);font-size:11px;padding:8px 14px;border-radius:7px;border:1px solid var(--line2);color:var(--muted);background:#fff}
+  .btn.gold{background:var(--goldbg);border-color:var(--goldline);color:var(--gold);font-weight:700}
+  .btn.ghost{background:transparent}
+  .link{font-family:var(--mono);font-size:11px;color:#37507e}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .cards.four{grid-template-columns:repeat(4,1fr)}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .mini{font-size:11px;color:var(--muted)}
+  .navbar{display:flex;align-items:center;justify-content:space-between}
+  .navlinks{display:flex;gap:14px}
+  .dark .body{background:var(--green)}
+  .sec.dark .body .ph{background:#33513f}
+  .sec.dark .body .eyebrow{color:#8fd0ac}
+  .sec.dark .body .ph.h1{background:#3d5f49}
+  .stat{font-family:var(--mono);text-align:center}
+  .stat .big{font-size:22px;font-weight:700;color:var(--ink)}
+  .flag{display:inline-block;font-family:var(--mono);font-size:10px;color:#6b7280;border:1px dashed #c4ccd8;background:#f0f2f5;padding:1px 6px;border-radius:5px;margin-left:6px}
+  .compliance{font-family:var(--mono);font-size:10px;color:var(--muted);border-top:1px dashed var(--line2);padding-top:8px;margin-top:6px}
+  footer.pg{color:var(--muted);font-size:12px;margin-top:26px;text-align:center}
+  @media (max-width:820px){
+    .sec{grid-template-columns:1fr}
+    .body{border-right:0;border-bottom:1px dashed var(--line2)}
+    .cards,.cards.four{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kick">Website Factory · Conversion Skeleton</div>
+    <h1>Advisor homepage wireframe — the spine, applied</h1>
+    <p>Low-fidelity structure only (boxes = content, not design). This is the fixed 9-section conversion architecture every advisor site runs on — the same spine for every advisor. What changes per firm is the <b>content, the ICP, and the visual skin</b> — never the sequence. Right column = the conversion job of each section. Green = a lead/booking action; everything on the page funnels to one destination: <b>book a call</b>.</p>
+  </header>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:#f4f6f9;border:1px solid #cdd5e0"></span><b>Box</b> = content block / placeholder</span>
+    <span><span class="swatch" style="background:#e9f2ec;border:1px solid #cbe1d3"></span><b>Green</b> = booking / lead-capture action</span>
+    <span><span class="swatch" style="background:#eaf0fb;border:1px solid #b9cbec"></span><b>Right rail</b> = why the section exists</span>
+    <span><span class="flag">[VERIFY]</span> = real facts/proof the firm supplies</span>
+  </div>
+
+  <div class="canvas">
+
+    <!-- 1 NAV -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">1</span> Navigation</div>
+        <div class="box pad navbar">
+          <img src="axiom-logo-black.png" alt="Axiom Planning Resources" style="height:26px;width:auto;display:block">
+          <div class="navlinks">
+            <span class="mini">About</span><span class="mini">Who We Serve</span><span class="mini">Services</span><span class="mini">Process</span>
+            <span class="btn gold">Book a Call →</span>
+          </div>
+        </div>
+        <div class="mini" style="margin-top:8px">Transparent at top → frosted glass on scroll. Mobile: hamburger → full-screen overlay.</div>
+      </div>
+      <div class="note">
+        <div class="job">Trust signal</div>
+        In 2 seconds: “Is this legit? Do they serve people like me?”
+        <div><span class="cta-tag">CTA · gold “Book a Call” persistent</span></div>
+      </div>
+    </div>
+
+    <!-- 2 HERO -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">2</span> Hero</div>
+        <div class="eyebrow">Location · Category  — e.g. “Franklin, TN · Private Wealth &amp; Estate”</div>
+        <div class="ph h1"></div>
+        <div class="ph line w80"></div>
+        <div class="mini" style="margin:4px 0 10px">H1 = a question that names the prospect’s core problem. Subhead = who you are + who you serve, one line.</div>
+        <div class="row" style="align-items:center">
+          <span class="btn gold">Book a Call →</span>
+          <span class="btn">Take the 2-min Fit Check</span>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <div class="box pad col center mini">Yrs experience <span class="flag">[VERIFY]</span></div>
+          <div class="box pad col center mini">Fiduciary</div>
+          <div class="box pad col center mini">Independent</div>
+          <div class="box pad col center mini">Location</div>
+        </div>
+      </div>
+      <div class="note">
+        <div class="job">Hook — “that’s me”</div>
+        Crystallize the vague problem into the exact question they’ve been unable to answer. Understood before sold to.
+        <div><span class="cta-tag">CTA · Book (high) + Fit Check (low)</span></div>
+        <div class="feel">Feels: recognition.</div>
+      </div>
+    </div>
+
+    <!-- 3 PROBLEM -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">3</span> The Problem — pain validation</div>
+        <div class="eyebrow">The problem</div>
+        <div class="ph title"></div>
+        <div class="cards" style="margin-top:12px">
+          <div class="box pad"><div class="ph w60"></div><div class="ph sm"></div><div class="mini">Pain #1 — their words</div></div>
+          <div class="box pad"><div class="ph w60"></div><div class="ph sm"></div><div class="mini">Pain #2 — their words</div></div>
+          <div class="box pad"><div class="ph w60"></div><div class="ph sm"></div><div class="mini">Pain #3 — their words</div></div>
+        </div>
+        <div class="mini" style="margin-top:10px">3–4 pains from ICP research — the emotional reality + the practical consequence. <b>Never invented.</b></div>
+      </div>
+      <div class="note">
+        <div class="job">Validation</div>
+        They see their own unspoken frustration named precisely.
+        <div><span class="cta-tag cta-none">No CTA — let the pain land</span></div>
+      </div>
+    </div>
+
+    <!-- 4 TRUST -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">4</span> Trust establishment</div>
+        <div class="cards four">
+          <div class="box pad center mini">◇<br>Fiduciary</div>
+          <div class="box pad center mini">◇<br>Registered <span class="flag">[VERIFY]</span></div>
+          <div class="box pad center mini">◇<br>Credentials <span class="flag">[VERIFY]</span></div>
+          <div class="box pad center mini">◇<br>Independent</div>
+        </div>
+        <div class="mini" style="margin-top:10px">4–6 credential markers, custom icons (never emoji). A credibility floor, not a boast.</div>
+      </div>
+      <div class="note">
+        <div class="job">Credibility</div>
+        “Can this person actually help me? Are they legit?” — answered with facts.
+        <div><span class="cta-tag cta-none">No CTA — let credibility compound</span></div>
+      </div>
+    </div>
+
+    <!-- 5 WHO WE SERVE -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">5</span> Who we serve — ICP self-sort</div>
+        <div class="eyebrow">We specialize. Generalists are everywhere.</div>
+        <div class="cards" style="margin-top:12px">
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">ICP 1</div><div class="link">See how we work with you →</div></div>
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">ICP 2</div><div class="link">See how we work with you →</div></div>
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">ICP 3</div><div class="link">See how we work with you →</div></div>
+        </div>
+        <div class="mini" style="margin-top:10px">Examples: business owners · executives · high-net-worth &amp; legacy families — the three ideal-client types, dialed to this advisor's niche.</div>
+      </div>
+      <div class="note">
+        <div class="job">Belonging</div>
+        “They work with people exactly like me.” Right-fit opts in; wrong-fit self-exits.
+        <div><span class="cta-tag">CTA · soft text links only</span></div>
+      </div>
+    </div>
+
+    <!-- 6 FIT ASSESSMENT -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">6</span> Fit assessment — <b>lead capture</b></div>
+        <div class="box pad" style="border:2px solid var(--goldline);background:var(--goldbg)">
+          <div class="eyebrow">Are we the right fit for you?</div>
+          <div class="ph w60"></div>
+          <div class="row" style="margin-top:10px">
+            <div class="box pad col mini" style="background:#fff">Q: your situation</div>
+            <div class="box pad col mini" style="background:#fff">Q: assets range</div>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <div class="box pad col mini" style="background:#fff">Q: biggest concern</div>
+            <div class="box pad col mini" style="background:#fff">Q: current advisor?</div>
+          </div>
+          <div class="row" style="margin-top:10px;align-items:center">
+            <div class="box pad col mini" style="background:#fff">Email — “where should we send your results?”</div>
+            <span class="btn gold">See my results →</span>
+          </div>
+        </div>
+        <div class="mini" style="margin-top:10px">Feels like a premium tool, not a web form. <b>Lighter variant:</b> for referral-driven practices, dial this down — a low-key “See if we’re a fit” / contact step, not a funnel.</div>
+      </div>
+      <div class="note">
+        <div class="job">★ Primary MQL → SQL event</div>
+        Lowest-friction conversion. They’ve felt the pain, seen credibility, self-identified — now they raise their hand.
+        <div><span class="cta-tag">CTA · the section IS the capture</span></div>
+        <div class="feel">Feels: a personalized assessment, not a trap.</div>
+      </div>
+    </div>
+
+    <!-- 7 SOLUTION -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">7</span> The solution — services</div>
+        <div class="eyebrow">A coordinated approach</div>
+        <div class="cards two" style="margin-top:12px">
+          <div class="box pad"><div class="ph w60"></div><div class="mini">Service → the pain it solves (from §3)</div></div>
+          <div class="box pad"><div class="ph w60"></div><div class="mini">Service → the pain it solves</div></div>
+          <div class="box pad"><div class="ph w60"></div><div class="mini">Service → the pain it solves</div></div>
+          <div class="box pad"><div class="ph w60"></div><div class="mini">Service → the pain it solves</div></div>
+        </div>
+        <div class="link" style="margin-top:10px">See all services →</div>
+        <div class="mini" style="margin-top:6px">Every service maps to a pain above — no orphan services.</div>
+      </div>
+      <div class="note">
+        <div class="job">Hope / depth</div>
+        “Finally, someone who can handle all of this — not just a piece.”
+        <div><span class="cta-tag">CTA · soft “learn more”</span></div>
+      </div>
+    </div>
+
+    <!-- 8 PROCESS -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag core"><span class="n">8</span> The path — process</div>
+        <div class="cards four" style="margin-top:4px">
+          <div class="box pad mini center">1 · Discovery</div>
+          <div class="box pad mini center">2 · Assessment</div>
+          <div class="box pad mini center">3 · Plan</div>
+          <div class="box pad mini center">4 · Partnership</div>
+        </div>
+        <div class="box pad mini" style="margin-top:12px;background:#f2f4f7">“No obligation. The first call is just a conversation.”</div>
+        <div class="row" style="margin-top:12px"><span class="btn gold">Schedule the first call</span></div>
+      </div>
+      <div class="note">
+        <div class="job">Confidence — de-risk</div>
+        Kills the #1 blocker: fear of the sales pitch. Shows exactly what happens next.
+        <div><span class="cta-tag">CTA · “Schedule the first call”</span></div>
+      </div>
+    </div>
+
+    <!-- 9 TEAM / ABOUT -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag std"><span class="n">+</span> Team &amp; story <span class="mini" style="margin-left:6px">(multi-advisor variant of About)</span></div>
+        <div class="cards four" style="margin-top:4px">
+          <div class="box pad center mini"><div class="ph" style="height:40px;border-radius:6px"></div>Partner <span class="flag">[VERIFY]</span></div>
+          <div class="box pad center mini"><div class="ph" style="height:40px;border-radius:6px"></div>Partner</div>
+          <div class="box pad center mini"><div class="ph" style="height:40px;border-radius:6px"></div>Partner</div>
+          <div class="box pad center mini"><div class="ph" style="height:40px;border-radius:6px"></div>Associate</div>
+        </div>
+        <div class="mini" style="margin-top:10px">Firm origin story + per-partner bios (photo, arc, credentials). <b>Story-video slots live here</b> — org video + one per partner (transfer-of-trust).</div>
+      </div>
+      <div class="note">
+        <div class="job">Humanize</div>
+        People work with people. Builds personal trust — critical for referral-driven, relationship firms.
+        <div><span class="cta-tag">CTA · soft “full story →”</span></div>
+      </div>
+    </div>
+
+    <!-- + PROOF -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag std"><span class="n">+</span> Proof — stats &amp; affirmations</div>
+        <div class="cards four">
+          <div class="box pad stat"><div class="big">00</div><div class="mini">stat <span class="flag">[VERIFY]</span></div></div>
+          <div class="box pad stat"><div class="big">$00</div><div class="mini">stat <span class="flag">[VERIFY]</span></div></div>
+          <div class="box pad stat"><div class="big">00</div><div class="mini">stat <span class="flag">[VERIFY]</span></div></div>
+          <div class="box pad stat"><div class="big">00</div><div class="mini">stat <span class="flag">[VERIFY]</span></div></div>
+        </div>
+        <div class="compliance">Stats &amp; testimonials real + compliance-cleared only. Placeholder numbers/testimonials never ship. “Past performance is not a guarantee…”</div>
+      </div>
+      <div class="note">
+        <div class="job">Proof</div>
+        Quantified, specific — sits near the friction it resolves.
+        <div><span class="cta-tag cta-none">No hard CTA</span></div>
+      </div>
+    </div>
+
+    <!-- + PODCAST / INSIGHTS -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag std"><span class="n">+</span> Podcast &amp; insights <span class="mini" style="margin-left:6px">(the authority engine, living on the hub)</span></div>
+        <div class="cards" style="margin-top:4px">
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">Ep. 01 — problem / pain</div><div class="link">Listen →</div></div>
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">Ep. 02 — objection</div><div class="link">Listen →</div></div>
+          <div class="box pad"><div class="ph w40"></div><div class="ph sm"></div><div class="mini">Ep. 03 — the solution</div><div class="link">Listen →</div></div>
+        </div>
+        <div class="mini" style="margin-top:10px">Static podcast (8 episodes) embedded on the site + Spotify / Apple / YouTube. Feeds the hub; each episode ends in a subtle call to action.</div>
+      </div>
+      <div class="note">
+        <div class="job">Authority + depth</div>
+        Speaks to the prospect's real problems on their own time — then points back to a conversation.
+        <div><span class="cta-tag">CTA · soft “listen” → book</span></div>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="sec dark">
+      <div class="body">
+        <div class="tag core" style="color:#c9ddd0"><span class="n" style="background:#5fe0a0;color:#0b2a1c">9</span> Final CTA — the close</div>
+        <div class="center" style="padding:6px 0 4px">
+          <div class="eyebrow">The first call is just a conversation</div>
+          <div class="ph h1" style="margin:10px auto;width:70%"></div>
+          <div class="ph line w60" style="margin:0 auto"></div>
+          <div class="row" style="justify-content:center;margin-top:16px">
+            <span class="btn gold">Book a Call →</span>
+            <span class="btn ghost" style="color:#bcd6c8;border-color:#3f6b52">Take the Fit Check</span>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <div class="job">Action</div>
+        Warm, personal, direct — invited, not pressured.
+        <div><span class="cta-tag">CTA · Book (high) + Fit Check (low)</span></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="sec">
+      <div class="body">
+        <div class="tag std"><span class="n">+</span> Footer</div>
+        <div class="cards four">
+          <div class="box pad mini">Brand + tagline</div>
+          <div class="box pad mini">Navigation</div>
+          <div class="box pad mini">Specialties</div>
+          <div class="box pad mini">Contact</div>
+        </div>
+        <div class="compliance">FINRA/SEC “registered investment advisor” disclaimer · entity name · risk disclosure — required before launch.</div>
+      </div>
+      <div class="note">
+        <div class="job">Nav · contact · compliance</div>
+        The regulatory floor. Never dropped.
+      </div>
+    </div>
+
+  </div><!-- /canvas -->
+
+  <footer class="pg">
+    Every section is a step in one journey — <b>Safety → Recognition → Validation → Credibility → Belonging → Engagement → Hope → Confidence → Action</b> — and every CTA on the page points to the same door: <b>book a call</b>.
+  </footer>
+
+</div>
+</body>
+</html>
